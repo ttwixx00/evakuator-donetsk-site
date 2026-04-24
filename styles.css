@@ -282,8 +282,15 @@ p {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.95rem;
   margin-top: 2rem;
+}
+
+.phone-stack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  gap: 0.95rem;
 }
 
 .btn,
@@ -325,6 +332,7 @@ p {
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(17, 18, 22, 0.08);
   box-shadow: var(--shadow);
+  white-space: nowrap;
 }
 
 .phone-badge--light {
@@ -372,24 +380,30 @@ p {
 
 .hero-visual {
   position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
   min-height: 34rem;
+  padding: 1.1rem 0 5rem;
 }
 
 .hero-visual img {
   position: relative;
   z-index: 2;
-  width: 100%;
-  min-height: 33rem;
+  width: min(100%, 35rem);
+  aspect-ratio: 0.96;
   object-fit: cover;
+  object-position: center 26%;
   border-radius: 2.3rem;
   box-shadow: var(--shadow-heavy);
   transform: translateY(calc(var(--hero-shift) * -1));
   filter: saturate(1.02) contrast(1.02);
+  margin-left: auto;
 }
 
 .hero-road {
   position: absolute;
-  inset: auto 0 6% 0;
+  inset: auto 4% 9% 8%;
   height: 12rem;
   border-radius: 999px;
   background:
@@ -415,19 +429,48 @@ p {
 }
 
 .hero-card--top {
-  top: 4%;
-  right: -2%;
+  top: 0;
+  right: 0;
   background: rgba(14, 16, 22, 0.84);
   color: var(--white);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.hero-card--bottom {
-  left: -2%;
-  bottom: 7%;
-  background: rgba(255, 255, 255, 0.86);
-  color: var(--text);
-  border: 1px solid rgba(17, 18, 22, 0.08);
+.hero-callout {
+  position: absolute;
+  left: 1.1rem;
+  right: 1.1rem;
+  bottom: 0.95rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.4rem;
+  border-radius: 999px;
+  color: #111217;
+  background: linear-gradient(135deg, var(--yellow), #ffe072);
+  box-shadow: 0 24px 44px rgba(245, 196, 0, 0.26), 0 18px 36px rgba(7, 8, 12, 0.18);
+}
+
+.hero-callout__label {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero-callout__phones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.45rem 1.15rem;
+}
+
+.hero-callout__phones a {
+  font-weight: 800;
+  white-space: nowrap;
 }
 
 .card-label {
@@ -1012,13 +1055,22 @@ p {
 .site-footer {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   gap: 1rem;
   padding: 0 0 3rem;
   color: var(--muted);
   font-size: 0.95rem;
 }
 
+.footer-phones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.75rem 1.2rem;
+}
+
 .site-footer a {
+  display: inline-flex;
   font-weight: 800;
   color: var(--text);
 }
@@ -1105,6 +1157,12 @@ p {
   .hero {
     min-height: auto;
   }
+
+  .hero-visual {
+    width: 100%;
+    max-width: 42rem;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 820px) {
@@ -1134,8 +1192,19 @@ p {
     right: 0;
   }
 
-  .hero-card--bottom {
-    left: 0;
+  .hero-visual {
+    justify-content: center;
+    min-height: 31rem;
+    padding-top: 0.7rem;
+  }
+
+  .hero-visual img {
+    width: min(100%, 33rem);
+  }
+
+  .hero-callout {
+    left: 0.8rem;
+    right: 0.8rem;
   }
 
   .step-card::before {
@@ -1190,11 +1259,17 @@ p {
 
   .hero-actions {
     flex-direction: column;
+    align-items: stretch;
   }
 
   .hero-actions .btn,
+  .hero-actions .phone-stack,
   .hero-actions .phone-badge {
     width: 100%;
+  }
+
+  .phone-stack {
+    grid-template-columns: 1fr;
   }
 
   .metrics,
@@ -1204,7 +1279,8 @@ p {
   }
 
   .hero-visual {
-    min-height: 21rem;
+    min-height: auto;
+    padding: 0.35rem 0 0;
   }
 
   .hero-card {
@@ -1223,7 +1299,29 @@ p {
 
   .hero-visual img {
     margin-top: 0.8rem;
-    min-height: 21rem;
+    width: 100%;
+    aspect-ratio: 0.94;
+    object-position: center 18%;
+  }
+
+  .hero-callout {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    margin: -3.4rem 0 0.85rem;
+    padding: 1rem 1.1rem;
+    border-radius: 1.8rem;
+  }
+
+  .hero-callout__phones {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.35rem;
   }
 
   .geo-map {
@@ -1251,6 +1349,12 @@ p {
   .site-footer {
     flex-direction: column;
     padding-bottom: 6rem;
+  }
+
+  .footer-phones {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.65rem;
   }
 
   .sticky-call {
