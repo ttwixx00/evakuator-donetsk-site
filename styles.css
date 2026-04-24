@@ -1307,8 +1307,8 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 15rem;
-    height: 15rem;
+    min-height: 14rem;
+    height: 14rem;
     padding: 1rem 0.95rem;
     border-radius: 1.65rem;
   }
@@ -1331,11 +1331,11 @@ p {
 
   .hero-visual img {
     width: 100%;
-    min-height: 15rem;
-    height: 15rem;
+    min-height: 14rem;
+    height: 14rem;
     margin: 0;
     aspect-ratio: auto;
-    object-position: center 30%;
+    object-position: center 34%;
     border-radius: 1.65rem;
   }
 
