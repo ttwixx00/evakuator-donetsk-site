@@ -1217,6 +1217,12 @@ p {
 }
 
 @media (max-width: 640px) {
+  .section-heading h2,
+  .cta-inner h2 {
+    line-height: 1.02;
+    font-size: clamp(2rem, 9vw, 2.9rem);
+  }
+
   .page-shell {
     width: min(var(--container), calc(100% - 0.5rem));
   }
@@ -1299,9 +1305,10 @@ p {
 
   .hero-visual img {
     margin-top: 0.8rem;
-    width: 100%;
-    aspect-ratio: 0.94;
-    object-position: center 18%;
+    width: calc(100% - 0.9rem);
+    margin-inline: auto;
+    aspect-ratio: 1.14;
+    object-position: center 24%;
   }
 
   .hero-callout {
@@ -1312,7 +1319,8 @@ p {
     flex-direction: column;
     align-items: stretch;
     text-align: center;
-    margin: -3.4rem 0 0.85rem;
+    width: calc(100% - 1rem);
+    margin: -2.7rem auto 0.85rem;
     padding: 1rem 1.1rem;
     border-radius: 1.8rem;
   }
@@ -1344,6 +1352,59 @@ p {
     min-height: 2.05rem;
     padding: 0.45rem 0.75rem;
     font-size: 0.66rem;
+  }
+
+  .fleet-grid,
+  .fleet-stack {
+    gap: 1.2rem;
+  }
+
+  .fleet-card {
+    background: var(--surface-strong);
+    box-shadow: var(--shadow);
+  }
+
+  .fleet-card::after {
+    display: none;
+  }
+
+  .fleet-card img {
+    aspect-ratio: 1.24;
+    height: auto;
+    object-position: center 38%;
+  }
+
+  .fleet-card figcaption {
+    position: static;
+    display: block;
+    padding: 1rem 1.1rem 1.15rem;
+    color: var(--text);
+    background: var(--surface-strong);
+  }
+
+  .fleet-card strong {
+    font-size: 1.02rem;
+    line-height: 1.35;
+  }
+
+  .fleet-card figcaption p {
+    margin-top: 0.45rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .fleet-card--large figcaption {
+    background: var(--surface-strong);
+  }
+
+  .fleet-card--large span {
+    display: inline-flex;
+    margin-top: 0.8rem;
+    padding: 0.55rem 0.85rem;
+    background: rgba(245, 196, 0, 0.14);
+    border-color: rgba(17, 18, 22, 0.08);
+    color: var(--text);
   }
 
   .site-footer {
